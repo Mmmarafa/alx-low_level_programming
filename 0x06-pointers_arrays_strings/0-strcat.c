@@ -1,6 +1,6 @@
 /*
  * File: 0-strcat.c
- * Auth: IBRAHIM MUHAMMAD
+ * Auth: Mahmud Marafa
  */
 
 #include "main.h"
