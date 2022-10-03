@@ -1,53 +1,49 @@
-#include <stdio.h>
-#include "main.h"
+#include <stdlib.h>
 
 /**
- * _strlen - returns the length of a string
- * @s: string s
- * Return: length of string
- */
-int _strlen(char *s)
-{
-	int len = 0;
+ * argstostr - a function that concatenates
+ *             all the arguments
+ *
+ * @ac: argument counter
+ * @av: argument holder
+ *
+ * Return: a pointer to a new string
+ *         or NULL if it fails
+*/
 
-	while (*s++)
-		len++;
-
-	return (len);
-}
-
-/**
- * argstostr - concatenates all the arguments of your program
- * @ac: argument count
- * @av: argument vector
- * Return: concatenated string
- */
 char *argstostr(int ac, char **av)
 {
-	int i, j, len, total;
-	int m = 0;
-	char *ptr;
+	int i, j, k, length;
+	char *str;
 
-	if (!ac || !av)
+	if (ac == 0 || av == NULL)
 		return (NULL);
-	total = 0;
+
+	/*find length of vector + '\0' which makes it a 2d array*/
+	length = 0;
 	for (i = 0; i < ac; i++)
 	{
-		len = _strlen(av[i]) + 1;
-		total += len;
+		for (j = 0; av[i][j] != '\0'; j++)
+			length++;
+		length++;
 	}
-	ptr = malloc(sizeof(char) * total + 1);
-	if (!ptr)
+
+	str = malloc((length + 1) * sizeof(char));
+	if (str == NULL)
 		return (NULL);
+
+	k = 0;
 	for (i = 0; i < ac; i++)
 	{
-		len = _strlen(av[i]);
-		for (j = 0; j < len; j++, m++)
+		for (j = 0; av[i][j] != '\0'; j++)
 		{
-			ptr[m] = av[i][j];
+			str[k] = av[i][j];
+			k++;
 		}
-		ptr[m++] = '\n';
+		str[k] = '\n';
+		k++;
 	}
-	ptr[m] = '\0';
-	return (ptr);
+	str[k] = '\0';
+
+	return (str);
 }
