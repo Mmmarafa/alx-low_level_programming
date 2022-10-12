@@ -2,13 +2,16 @@
 #include "function_pointers.h"
 #include <stdio.h>
 /**
- * print_name - prints a name
- * @name: pointer to char
- * @f: pointer to function that returns nothing
- * Return: nothing
- **/
+* print_name - function to print name
+* 
+* @name: name to print
+* @f: function pointer that doesn't return anything
+* 
+* Return: Always 0 (success)
+*/
+
 void print_name(char *name, void (*f)(char *))
 {
-	if (name != NULL && *name != '\0' && f != NULL)
-	f(name);
+	if (name && f)
+		f(name);
 }
