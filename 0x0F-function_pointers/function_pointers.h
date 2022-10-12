@@ -17,5 +17,4 @@ typedef enum bool
 } bool;
 
 #endif /* FUNCTION_POINTERS_H */
-Footer
-© 2022 
+ 
