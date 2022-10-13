@@ -3,10 +3,10 @@
 #include <stdio.h>
 /**
 * print_name - function to print name
-* 
+*
 * @name: name to print
 * @f: function pointer that doesn't return anything
-* 
+*
 * Return: Always 0 (success)
 */
 
